@@ -4,6 +4,10 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+h1{
+    text-align: center;
+}
+
 #join-btn {
     position: fixed;
     top: 50%;
@@ -36,4 +40,21 @@ body {
 .video-player {
    width: 300px;
    height: 300px;
+}
+
+button {
+    border: none;
+    background-color: #e74c3c;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#room-btns {
+    display: none;
+    justify-content: center;
+    margin-top: 1em;
 }

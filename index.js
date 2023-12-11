@@ -15,6 +15,8 @@ let joinAndShowUsers = async () => {
 
   Tracks = await AgoraRTC.createMicrophoneAndCameraTracks();
 
+  client.on("user-left", UserLeftLogic);
+
   let player = `<div class="video-container" id="user-container-${UID}">
                         <div class="video-player" id="user-${UID}"></div>
                   </div>`;
@@ -30,7 +32,7 @@ let joinAndShowUsers = async () => {
 let joinRoom = async () => {
   await joinAndShowUsers();
   document.getElementById("join-btn").style.display = "none";
-  document.getElementById("stream-controls").style.display = "flex";
+  document.getElementById("room-btns").style.display = "flex";
 };
 
 let handleUserJoined = async (user, mediaType) => {
@@ -58,4 +60,22 @@ let handleUserJoined = async (user, mediaType) => {
   }
 };
 
+let UserLeftLogic = async (user) => {
+  delete Users[user.uid];
+  document.getElementById(`user-container-${user.uid}`).remove();
+};
+
+let leaveRoom = async () => {
+  for (let i = 0; Tracks.length > i; i++) {
+    Tracks[i].stop();
+    Tracks[i].close();
+  }
+
+  await client.leave();
+  document.getElementById("join-btn").style.display = "block";
+  document.getElementById("room-btns").style.display = "none";
+  document.getElementById("video-streams").innerHTML = "";
+};
+
 document.getElementById("join-btn").addEventListener("click", joinRoom);
+document.getElementById("leave-btn").addEventListener("click", leaveRoom);
