@@ -77,5 +77,22 @@ let leaveRoom = async () => {
   document.getElementById("video-streams").innerHTML = "";
 };
 
+let isMicrophoneMuted = false;
+
+let muteMicrophone = () => {
+  if (Tracks.length > 0) {
+    isMicrophoneMuted = !isMicrophoneMuted;
+
+    if (isMicrophoneMuted) {
+      Tracks[0].setEnabled(false);
+      document.getElementById("mute-btn").innerText = "Unmute Microphone";
+    } else {
+      Tracks[0].setEnabled(true);
+      document.getElementById("mute-btn").innerText = "Mute Microphone";
+    }
+  }
+};
+
 document.getElementById("join-btn").addEventListener("click", joinRoom);
 document.getElementById("leave-btn").addEventListener("click", leaveRoom);
+document.getElementById("mute-btn").addEventListener("click", muteMicrophone);
