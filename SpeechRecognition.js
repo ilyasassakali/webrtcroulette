@@ -14,6 +14,8 @@ const setupSpeechRecognition = () => {
       transcript += event.results[i][0].transcript;
     }
     transcriptContainer.innerText = transcript;
+
+    transcriptContainer.classList.toggle("active", transcript.length > 0);
   };
 
   recognition.onend = () => {

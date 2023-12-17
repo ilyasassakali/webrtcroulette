@@ -66,6 +66,26 @@ button:hover {
     margin-top: 1em;
 }
 
+
+#transcript-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: #118AB2;
+    color: white;
+    border-radius: 5px;
+    width: 300px;
+    overflow-wrap: break-word;
+    display: none;
+}
+  
+#transcript-container.active {
+    display: block; 
+    
+}
+
 @media (max-width: 800px) {
     .video-container {       
         margin: 10px 0;
