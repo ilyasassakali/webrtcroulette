@@ -9,3 +9,5 @@ fostering collaboration, communication, and engagement like never before.
 - used RTC docs from Agora for videoChat -> https://docs.agora.io/en/video-calling/get-started/get-started-sdk?platform=web
 - downloaded web RTC SDK from Agora for js file -> https://docs.agora.io/en/sdks?platform=web
 - used .mjs files to get credentials from config.mjs file -> https://dev.to/bennycode/how-to-use-mjs-files-in-node-js-23ep
+- speech to text api used -> https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
+  

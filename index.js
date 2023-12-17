@@ -1,4 +1,9 @@
 import config from "./config.mjs";
+import {
+  setupSpeechRecognition,
+  startSpeechRecognition,
+  stopSpeechRecognition,
+} from "./SpeechRecognition.js";
 
 const APP_ID = config.APP_ID;
 const TOKEN = config.TOKEN;
@@ -33,6 +38,8 @@ let joinRoom = async () => {
   await joinAndShowUsers();
   document.getElementById("join-btn").style.display = "none";
   document.getElementById("room-btns").style.display = "flex";
+
+  startSpeechRecognition();
 };
 
 let handleUserJoined = async (user, mediaType) => {
@@ -75,6 +82,8 @@ let leaveRoom = async () => {
   document.getElementById("join-btn").style.display = "block";
   document.getElementById("room-btns").style.display = "none";
   document.getElementById("video-streams").innerHTML = "";
+
+  stopSpeechRecognition();
 };
 
 let isMicrophoneMuted = false;
@@ -96,3 +105,5 @@ let muteMicrophone = () => {
 document.getElementById("join-btn").addEventListener("click", joinRoom);
 document.getElementById("leave-btn").addEventListener("click", leaveRoom);
 document.getElementById("mute-btn").addEventListener("click", muteMicrophone);
+
+document.addEventListener("DOMContentLoaded", setupSpeechRecognition);
